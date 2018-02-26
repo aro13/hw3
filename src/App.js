@@ -27,13 +27,24 @@ class App extends Component {
       hand: ["face_down", "face_down", "face_down", "face_down", "face_down"]
     }
   }
+  dealHand() {
+    let cards = shuffledDeck();
+      this.setState({
+        hand: cards.splice(0,5)
+      })
+    }
   render() {
     // array to hold JSX elements
-    let cards = []; 
+    let cardImage0 = "http://golearntocode.com/images/cards/" + this.state.hand[0] + ".png";
+    let cardImage1 = "http://golearntocode.com/images/cards/" + this.state.hand[1] + ".png";
+    let cardImage2 = "http://golearntocode.com/images/cards/" + this.state.hand[2] + ".png";
+    let cardImage3 = "http://golearntocode.com/images/cards/" + this.state.hand[3] + ".png";
+    let cardImage4 = "http://golearntocode.com/images/cards/" + this.state.hand[4] + ".png";
+
     return (
       <div className="App">
-        {cards}     
-        <p><button>Deal a new hand</button></p>
+        <img src ={cardImage0} /> <img src ={cardImage1} /> <img src ={cardImage2} /> <img src ={cardImage3} /> <img src ={cardImage4} />
+        <p><button onClick={() => this.dealHand()}>Deal a new hand</button></p>
       </div>
     );
   }
